@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 dashboard1 = "https://public.tableau.com/app/profile/jay.jagatap/viz/GlobalAIAdoptioninEducationDashboard1/Dashboard1"
 dashboard2 ="https://public.tableau.com/app/profile/jay.jagatap/viz/GlobalAiProjectDashboard/Dashboard2"
-story ="https://public.tableau.com/app/profile/jay.jagatap/viz/GlobalAIAdoptioninEducation_17860266977410/Story1"
+story ="https://public.tableau.com/app/profile/jay.jagatap/viz/Global_AI_Adoption_EducationStory/Story1"
 
 
 @app.route("/")

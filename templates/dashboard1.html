@@ -1,189 +1,1424 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard 1 | Global AI Adoption</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dashboard 1 | Global AI Adoption in Education</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
 
-        body{
-            font-family:Arial, Helvetica, sans-serif;
-            background:#f4f8fc;
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
         }
 
-        /* Navbar */
-
-        .navbar{
-            background:#0d1b2a;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .navbar-brand{
-            color:white;
-            font-weight:bold;
-            font-size:24px;
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: #f5f7fb;
+            color: #172033;
         }
 
-        .navbar-brand:hover{
-            color:white;
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            background: #071426;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .nav-link{
-            color:white !important;
-            margin-left:15px;
+        .navbar-brand {
+            color: white !important;
+            font-size: 21px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .nav-link:hover{
-            color:#00d4ff !important;
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2563eb;
+            font-size: 20px;
         }
 
-        /* Header */
-
-        .hero{
-            background:linear-gradient(135deg,#1f4b8f,#2563eb);
-            color:white;
-            padding:60px 20px;
-            text-align:center;
+        .nav-link {
+            color: #cbd5e1 !important;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 9px 15px !important;
+            margin-left: 5px;
+            border-radius: 8px;
+            transition: 0.3s;
         }
 
-        .hero h1{
-            font-size:45px;
-            font-weight:bold;
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .hero p{
-            font-size:18px;
-            margin-top:15px;
+        .nav-link.active {
+            color: white !important;
+            background: #2563eb;
         }
 
-        /* Dashboard */
 
-        .dashboard-card{
-            background:white;
-            border-radius:15px;
-            padding:20px;
-            margin-top:40px;
-            box-shadow:0 8px 20px rgba(0,0,0,.15);
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            padding: 75px 20px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 40%,
+                    rgba(37, 99, 235, 0.35),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 85% 60%,
+                    rgba(14, 165, 233, 0.22),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #071426,
+                    #10294a
+                );
+
+            color: white;
         }
 
-        iframe{
-            width:100%;
-            height:850px;
-            border:none;
-            border-radius:10px;
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
         }
 
-        .btn-custom{
-            background:#1f4b8f;
-            color:white;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
-        .btn-custom:hover{
-            background:#163b73;
-            color:white;
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.08);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            color: #93c5fd;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 20px;
         }
 
-        footer{
-            background:#0d1b2a;
-            color:white;
-            text-align:center;
-            padding:20px;
-            margin-top:60px;
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(
+                90deg,
+                #60a5fa,
+                #22d3ee
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 750px;
+
+            color: #b8c5d8;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .btn-primary-custom {
+            background: #2563eb;
+            color: white;
+
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            background: #1d4ed8;
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid #64748b;
+
+            color: white;
+
+            padding: 11px 22px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+            margin-left: 8px;
+
+            transition: 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: #0f172a;
+        }
+
+
+        /* =====================================================
+           DASHBOARD INFORMATION
+        ===================================================== */
+
+        .info-section {
+            padding: 55px 0 25px;
+        }
+
+        .info-card {
+            background: white;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 15px;
+
+            padding: 24px;
+
+            height: 100%;
+
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            border-radius: 10px;
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .info-card h5 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           DASHBOARD SECTION
+        ===================================================== */
+
+        .dashboard-section {
+            padding: 50px 0 80px;
+        }
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-label {
+            color: #2563eb;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           DASHBOARD CONTAINER
+        ===================================================== */
+
+        .dashboard-wrapper {
+
+            position: relative;
+
+            background: #0b1729;
+
+            border-radius: 18px;
+
+            padding: 8px;
+
+            box-shadow:
+                0 20px 50px rgba(15, 23, 42, 0.18);
+
+            overflow: hidden;
+        }
+
+        .dashboard-topbar {
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 15px;
+
+            background: #0b1729;
+
+            color: white;
+        }
+
+        .dashboard-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .live-dot {
+
+            width: 9px;
+            height: 9px;
+
+            background: #22c55e;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px rgba(34,197,94,0.8);
+        }
+
+        .fullscreen-btn {
+
+            border: 1px solid #334155;
+
+            background: #17253a;
+
+            color: #cbd5e1;
+
+            padding: 7px 13px;
+
+            border-radius: 7px;
+
+            font-size: 12px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .fullscreen-btn:hover {
+
+            background: #2563eb;
+
+            color: white;
+
+            border-color: #2563eb;
+        }
+
+
+        /* =====================================================
+           TABLEAU
+        ===================================================== */
+
+        .tableau-container {
+
+            position: relative;
+
+            background: white;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .tableau-container iframe {
+
+            display: block;
+
+            width: 100%;
+
+            height: 850px;
+
+            border: none;
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading {
+
+            position: absolute;
+
+            inset: 55px 0 0 0;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 10;
+
+            transition: 0.4s;
+        }
+
+        .loading-content {
+
+            text-align: center;
+
+            color: #475569;
+        }
+
+        .spinner {
+
+            width: 42px;
+
+            height: 42px;
+
+            border: 4px solid #e2e8f0;
+
+            border-top-color: #2563eb;
+
+            border-radius: 50%;
+
+            animation: spin 1s linear infinite;
+
+            margin: auto auto 15px;
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =====================================================
+           BOTTOM NAVIGATION
+        ===================================================== */
+
+        .dashboard-navigation {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 25px;
+
+            gap: 15px;
+        }
+
+        .nav-button {
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 11px 18px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .back-btn {
+
+            background: white;
+
+            color: #334155;
+
+            border: 1px solid #e2e8f0;
+        }
+
+        .back-btn:hover {
+
+            color: #2563eb;
+
+            border-color: #2563eb;
+        }
+
+        .next-btn {
+
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .next-btn:hover {
+
+            background: #1d4ed8;
+
+            color: white;
+
+            transform: translateX(3px);
+        }
+
+
+        /* =====================================================
+           INSIGHT BOX
+        ===================================================== */
+
+        .insight-section {
+
+            padding: 0 0 80px;
+        }
+
+        .insight-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f2440,
+                    #132f54
+                );
+
+            color: white;
+
+            border-radius: 18px;
+
+            padding: 40px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .insight-box::after {
+
+            content: "AI";
+
+            position: absolute;
+
+            right: 40px;
+
+            bottom: -50px;
+
+            font-size: 180px;
+
+            font-weight: 800;
+
+            color: rgba(255,255,255,0.035);
+        }
+
+        .insight-box h3 {
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .insight-box p {
+
+            color: #b8c5d8;
+
+            max-width: 800px;
+
+            line-height: 1.8;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: #06111f;
+
+            color: #94a3b8;
+
+            padding: 45px 0 20px;
+        }
+
+        footer h5 {
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+        footer p {
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .footer-line {
+
+            height: 1px;
+
+            background: #1e293b;
+
+            margin: 25px 0 18px;
+        }
+
+        .footer-link {
+
+            color: #94a3b8;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+        .footer-link:hover {
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .hero {
+
+                padding: 60px 20px;
+
+            }
+
+            .hero h1 {
+
+                font-size: 40px;
+
+            }
+
+            .hero p {
+
+                font-size: 15px;
+
+            }
+
+            .btn-outline-custom {
+
+                margin-left: 0;
+
+                margin-top: 10px;
+
+            }
+
+            .dashboard-topbar {
+
+                height: auto;
+
+                padding: 12px;
+
+                gap: 10px;
+
+            }
+
+            .dashboard-title {
+
+                font-size: 12px;
+
+            }
+
+            .tableau-container iframe {
+
+                height: 650px;
+
+            }
+
+            .dashboard-navigation {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+            .nav-button {
+
+                justify-content: center;
+
+            }
+
+            .insight-box {
+
+                padding: 30px;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-<!-- Navbar -->
 
-<nav class="navbar navbar-expand-lg">
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
-<div class="container">
+<nav class="navbar navbar-expand-lg sticky-top">
 
-<a class="navbar-brand" href="/">
-🌍 Global AI Students
-</a>
+    <div class="container">
 
-<div class="navbar-nav ms-auto">
+        <a class="navbar-brand" href="/">
 
-<a class="nav-link" href="/">Home</a>
+            <span class="brand-icon">
+                <i class="bi bi-globe2"></i>
+            </span>
 
-<a class="nav-link" href="/dashboard1">Dashboard 1</a>
+            Global AI Education
 
-<a class="nav-link" href="/dashboard2">Dashboard 2</a>
+        </a>
 
-<a class="nav-link" href="/story">Story</a>
 
-</div>
+        <button
+            class="navbar-toggler bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu"
+        >
 
-</div>
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <div class="navbar-nav ms-auto">
+
+                <a class="nav-link" href="/">
+                    Home
+                </a>
+
+                <a class="nav-link active" href="/dashboard1">
+                    Dashboard 1
+                </a>
+
+                <a class="nav-link" href="/dashboard2">
+                    Dashboard 2
+                </a>
+
+                <a class="nav-link" href="/story">
+                    Story
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </nav>
 
-<!-- Header -->
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-<h1>Dashboard 1</h1>
+    <div class="container">
 
-<p>
-Explore the first interactive Tableau dashboard showing AI adoption
-trends, usage patterns, and educational insights.
-</p>
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <i class="bi bi-bar-chart-fill me-2"></i>
+
+                INTERACTIVE DATA ANALYTICS
+
+            </div>
+
+
+            <h1>
+
+                Global AI Adoption
+
+                <br>
+
+                <span>
+                    Education Dashboard
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Explore global patterns of Artificial Intelligence
+                adoption in education through interactive Tableau
+                visualizations, geographic analysis, usage trends,
+                and comparative insights.
+
+            </p>
+
+
+            <a
+                href="#dashboard"
+                class="btn btn-primary-custom"
+            >
+
+                <i class="bi bi-bar-chart-line me-2"></i>
+
+                Explore Dashboard
+
+            </a>
+
+
+            <a
+                href="/"
+                class="btn btn-outline-custom"
+            >
+
+                <i class="bi bi-house me-2"></i>
+
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 
-<div class="container">
 
-<div class="dashboard-card">
 
-<h3 class="text-center mb-4">
-📊 Global AI Adoption Dashboard
-</h3>
+<!-- =====================================================
+     INFORMATION CARDS
+===================================================== -->
 
-<iframe
-src="https://public.tableau.com/views/GlobalAIAdoptioninEducationDashboard1/Dashboard1?:showVizHome=no"
+<section class="info-section">
 
-@app.route("/")
-width="100%"
-height="827"
-allowfullscreen>
-</iframe>
+    <div class="container">
 
-<div class="text-center mt-4">
+        <div class="row g-4">
 
-<a href="/" class="btn btn-custom">
-🏠 Back to Home
-</a>
 
-<a href="/dashboard2" class="btn btn-success">
-Next Dashboard →
-</a>
+            <div class="col-lg-4 col-md-6">
 
-</div>
+                <div class="info-card">
 
-</div>
+                    <div class="info-icon">
 
-</div>
+                        <i class="bi bi-globe-americas"></i>
+
+                    </div>
+
+                    <h5>
+                        Global Analysis
+                    </h5>
+
+                    <p>
+                        Analyze AI adoption patterns across
+                        countries and geographical regions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-graph-up-arrow"></i>
+
+                    </div>
+
+                    <h5>
+                        Adoption Trends
+                    </h5>
+
+                    <p>
+                        Track how AI adoption has evolved
+                        across the education sector over time.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-pie-chart-fill"></i>
+
+                    </div>
+
+                    <h5>
+                        Comparative Insights
+                    </h5>
+
+                    <p>
+                        Compare adoption levels, internet access
+                        and regional AI usage patterns.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    class="dashboard-section"
+    id="dashboard"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Tableau Visualization
+            </div>
+
+            <h2>
+                Global AI Adoption Dashboard
+            </h2>
+
+            <p>
+                Use the interactive dashboard below to explore
+                the data and discover key patterns.
+            </p>
+
+        </div>
+
+
+
+        <div class="dashboard-wrapper">
+
+
+            <!-- Dashboard top bar -->
+
+            <div class="dashboard-topbar">
+
+                <div class="dashboard-title">
+
+                    <span class="live-dot"></span>
+
+                    Global AI Adoption in Education
+
+                </div>
+
+
+                <button
+                    class="fullscreen-btn"
+                    onclick="openFullscreen()"
+                >
+
+                    <i class="bi bi-arrows-fullscreen me-1"></i>
+
+                    Fullscreen
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Tableau -->
+
+            <div
+                class="tableau-container"
+                id="tableauContainer"
+            >
+
+
+                <!-- Loading -->
+
+                <div
+                    class="loading"
+                    id="loading"
+                >
+
+                    <div class="loading-content">
+
+                        <div class="spinner"></div>
+
+                        <strong>
+                            Loading Tableau Dashboard...
+                        </strong>
+
+                        <div class="small mt-2">
+                            Please wait
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <iframe
+                    id="tableauFrame"
+                    src="https://public.tableau.com/views/GlobalAIAdoptioninEducationDashboard1/Dashboard1?:showVizHome=no&:display_count=n&:toolbar=yes"
+                    title="Global AI Adoption in Education Dashboard"
+                    allowfullscreen
+                    onload="hideLoading()"
+                >
+                </iframe>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Navigation -->
+
+        <div class="dashboard-navigation">
+
+
+            <a
+                href="/"
+                class="nav-button back-btn"
+            >
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Home
+
+            </a>
+
+
+            <a
+                href="/dashboard2"
+                class="nav-button next-btn"
+            >
+
+                Dashboard 2
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJECT INSIGHT
+===================================================== -->
+
+<section class="insight-section">
+
+    <div class="container">
+
+        <div class="insight-box">
+
+            <h3>
+
+                <i class="bi bi-lightbulb-fill me-2"></i>
+
+                What This Dashboard Shows
+
+            </h3>
+
+
+            <p class="mt-3">
+
+                This dashboard provides an interactive view of
+                Artificial Intelligence adoption in education.
+                Users can explore country-level adoption,
+                adoption categories, AI usage journeys over time,
+                and regional internet access comparisons.
+
+            </p>
+
+
+            <p>
+
+                The visualization helps identify differences in
+                AI adoption between regions and understand the
+                broader relationship between technology access
+                and AI usage in education.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-<h5>Global AI Adoption in Education</h5>
+    <div class="container">
 
-<p>
-Developed using Flask • Tableau • Python • Bootstrap
-</p>
+        <div class="row g-4">
 
-<p>
-© 2026 All Rights Reserved
-</p>
+
+            <div class="col-lg-6">
+
+                <h5>
+
+                    <i class="bi bi-globe2 me-2"></i>
+
+                    Global AI Adoption in Education
+
+                </h5>
+
+                <p class="mt-3">
+
+                    An interactive data analytics project exploring
+                    the adoption, usage and growth of Artificial
+                    Intelligence in education worldwide.
+
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Navigation
+                </h5>
+
+                <p>
+
+                    <a
+                        href="/"
+                        class="footer-link"
+                    >
+                        Home
+                    </a>
+
+                    <br>
+
+                    <a
+                        href="/dashboard1"
+                        class="footer-link"
+                    >
+                        Dashboard 1
+                    </a>
+
+                    <br>
+
+                    <a
+                        href="/dashboard2"
+                        class="footer-link"
+                    >
+                        Dashboard 2
+                    </a>
+
+                    <br>
+
+                    <a
+                        href="/story"
+                        class="footer-link"
+                    >
+                        Story
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Technologies
+                </h5>
+
+                <p>
+
+                    Python<br>
+
+                    Flask<br>
+
+                    Tableau<br>
+
+                    Bootstrap<br>
+
+                    Data Analytics
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <div class="text-center">
+
+            <small>
+
+                © 2026 Global AI Adoption in Education
+                • Built with Flask & Tableau
+
+            </small>
+
+        </div>
+
+    </div>
 
 </footer>
 
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* Hide Tableau loading screen */
+
+    function hideLoading() {
+
+        const loading =
+            document.getElementById("loading");
+
+        setTimeout(function() {
+
+            loading.style.opacity = "0";
+
+            setTimeout(function() {
+
+                loading.style.display = "none";
+
+            }, 400);
+
+        }, 500);
+
+    }
+
+
+    /* Fullscreen */
+
+    function openFullscreen() {
+
+        const container =
+            document.getElementById("tableauContainer");
+
+        if (container.requestFullscreen) {
+
+            container.requestFullscreen();
+
+        }
+
+        else if (container.webkitRequestFullscreen) {
+
+            container.webkitRequestFullscreen();
+
+        }
+
+        else if (container.msRequestFullscreen) {
+
+            container.msRequestFullscreen();
+
+        }
+
+    }
+
+</script>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
 </body>
+
 </html>

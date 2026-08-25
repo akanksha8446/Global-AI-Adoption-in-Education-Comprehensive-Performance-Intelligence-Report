@@ -3,322 +3,1114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Global AI Adoption in Education</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <style>
 
-        body{
-            font-family: Arial, sans-serif;
-            background:#f4f8fc;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Navbar */
-
-        .navbar{
-            background:#0d1b2a;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
+            color: #172033;
         }
 
-        .navbar-brand{
-            color:white;
-            font-weight:bold;
-            font-size:24px;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .navbar-brand:hover{
-            color:white;
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: rgba(8, 18, 35, 0.96);
+            padding: 18px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        .nav-link{
-            color:white !important;
-            margin-left:15px;
+        .navbar-brand {
+            color: white !important;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        .nav-link:hover{
-            color:#00d4ff !important;
+        .brand-icon {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            background: #2563eb;
+            border-radius: 10px;
+            margin-right: 8px;
         }
 
-        /* Hero */
+        .nav-link {
+            color: #d8e0ec !important;
+            font-weight: 500;
+            margin-left: 12px;
+            padding: 8px 14px !important;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
 
-        .hero{
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-link.active {
+            color: white !important;
+            background: #2563eb;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
             background:
-            linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
-            url("/static/images/ai-bg.jpg");
-
-            background-size:cover;
-            background-position:center;
-            height:90vh;
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
-
-            color:white;
-            text-align:center;
+                radial-gradient(circle at 15% 30%, rgba(37,99,235,0.35), transparent 30%),
+                radial-gradient(circle at 85% 70%, rgba(14,165,233,0.25), transparent 30%),
+                linear-gradient(135deg, #071426, #0d213d 55%, #102b4f);
         }
 
-        .hero h1{
-            font-size:55px;
-            font-weight:bold;
+        /* Background grid */
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+
+            background-size: 50px 50px;
         }
 
-        .hero p{
-            font-size:20px;
-            margin-top:20px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
         }
 
-        .hero .btn{
-            margin:10px;
-            padding:12px 30px;
+        .badge-custom {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            color: #9ec5ff;
+            background: rgba(255,255,255,0.06);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
         }
 
-        /* Section */
-
-        .section-title{
-            text-align:center;
-            margin:70px 0 40px;
-            font-weight:bold;
+        .hero h1 {
+            color: white;
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -3px;
         }
 
-        /* Cards */
-
-        .card{
-            border:none;
-            border-radius:15px;
-            box-shadow:0 8px 20px rgba(0,0,0,.10);
-            transition:.4s;
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .card:hover{
-            transform:translateY(-8px);
+        .hero p {
+            color: #b9c7d9;
+            font-size: 19px;
+            line-height: 1.8;
+            max-width: 760px;
+            margin-top: 25px;
         }
 
-        .stat{
-            font-size:38px;
-            color:#1f4b8f;
-            font-weight:bold;
+        .hero-buttons {
+            margin-top: 35px;
         }
 
-        /* About */
-
-        .about{
-            background:white;
-            margin-top:70px;
-            padding:50px;
-            border-radius:15px;
-            box-shadow:0 8px 20px rgba(0,0,0,.10);
+        .btn-main {
+            background: #2563eb;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 9px;
+            font-weight: 600;
+            border: none;
+            transition: 0.3s;
         }
 
-        footer{
-            background:#0d1b2a;
-            color:white;
-            text-align:center;
-            padding:25px;
-            margin-top:70px;
+        .btn-main:hover {
+            background: #1d4ed8;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #64748b;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 9px;
+            font-weight: 600;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #0f172a;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 38px;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        .section-description {
+            color: #64748b;
+            max-width: 700px;
+            margin: 15px auto 0;
+            line-height: 1.7;
+        }
+
+        /* ================= STAT CARDS ================= */
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5eaf1;
+            border-radius: 18px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(15,23,42,0.08);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 12px;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            font-size: 38px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .stat-card h5 {
+            font-size: 17px;
+            margin-top: 7px;
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* ================= DASHBOARD CARDS ================= */
+
+        .dashboard-card {
+            background: white;
+            border: 1px solid #e5eaf1;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(15,23,42,0.1);
+        }
+
+        .dashboard-header {
+            padding: 25px;
+            background: #0f1f35;
+            color: white;
+        }
+
+        .dashboard-header i {
+            font-size: 30px;
+        }
+
+        .dashboard-header h4 {
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+        .dashboard-body {
+            padding: 25px;
+        }
+
+        .dashboard-body p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-box {
+            background: white;
+            border: 1px solid #e5eaf1;
+            border-radius: 20px;
+            padding: 50px;
+        }
+
+        .about-box h2 {
+            font-weight: 800;
+        }
+
+        .about-box p {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #334155;
+            padding: 8px 14px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        /* ================= TABLEAU ================= */
+
+        .tableau-section {
+            background: #0b1729;
+            color: white;
+            padding: 90px 0;
+        }
+
+        .tableau-section .section-title {
+            color: white;
+        }
+
+        .tableau-box {
+            background: white;
+            border-radius: 18px;
+            padding: 10px;
+            margin-top: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .tableau-box iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #06111f;
+            color: #94a3b8;
+            padding: 50px 0 25px;
+        }
+
+        footer h4 {
+            color: white;
+            font-weight: 700;
+        }
+
+        .footer-line {
+            height: 1px;
+            background: #1e293b;
+            margin: 30px 0 20px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 768px) {
+
+            .navbar {
+                padding: 12px 0;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .about-box {
+                padding: 30px;
+            }
+
+            .tableau-box iframe {
+                height: 550px;
+            }
         }
 
     </style>
-
 </head>
+
 
 <body>
 
-<!-- Navbar -->
 
-<nav class="navbar navbar-expand-lg">
+<!-- ================= NAVBAR ================= -->
 
-<div class="container">
+<nav class="navbar navbar-expand-lg sticky-top">
 
-<a class="navbar-brand" href="/">
-🌍 Global AI Students
-</a>
+    <div class="container">
 
-<div class="navbar-nav ms-auto">
+        <a class="navbar-brand" href="/">
+            <span class="brand-icon">
+                <i class="bi bi-globe2"></i>
+            </span>
+            Global AI Education
+        </a>
 
-<a class="nav-link" href="/">Home</a>
 
-<a class="nav-link" href="/dashboard1">
-Dashboard 1
-</a>
+        <button class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
 
-<a class="nav-link" href="/dashboard2">
-Dashboard 2
-</a>
+            <span class="navbar-toggler-icon"></span>
 
-<a class="nav-link" href="/story">
-Story
-</a>
+        </button>
 
-</div>
 
-</div>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <div class="navbar-nav ms-auto">
+
+                <a class="nav-link active" href="/">
+                    Home
+                </a>
+
+                <a class="nav-link" href="/dashboard1">
+                    Dashboard 1
+                </a>
+
+                <a class="nav-link" href="/dashboard2">
+                    Dashboard 2
+                </a>
+
+                <a class="nav-link" href="/story">
+                    Story
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </nav>
 
-<!-- Hero -->
+
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-<div>
+    <div class="container">
 
-<h1>
-Global AI Adoption in Education
-</h1>
+        <div class="hero-content">
 
-<p>
-Evaluating the Adoption, Usage, and Growth of Artificial Intelligence
-in Education Worldwide.
-</p>
+            <span class="badge-custom">
+                <i class="bi bi-stars"></i>
+                DATA ANALYTICS • ARTIFICIAL INTELLIGENCE • EDUCATION
+            </span>
 
-<a href="/dashboard1" class="btn btn-primary btn-lg">
-Dashboard 1
-</a>
+            <h1>
+                Global AI Adoption
+                <br>
+                <span class="gradient-text">
+                    in Education
+                </span>
+            </h1>
 
-<a href="/dashboard2" class="btn btn-success btn-lg">
-Dashboard 2
-</a>
+            <p>
+                Explore how Artificial Intelligence is transforming
+                education worldwide through interactive data,
+                analytics, and Tableau visualizations.
+            </p>
 
-<a href="/story" class="btn btn-warning btn-lg">
-Story
-</a>
 
-</div>
+            <div class="hero-buttons">
+
+                <a href="/dashboard1"
+                   class="btn btn-main">
+
+                    <i class="bi bi-bar-chart-fill me-2"></i>
+                    Explore Dashboard
+
+                </a>
+
+
+                <a href="/story"
+                   class="btn btn-outline">
+
+                    <i class="bi bi-play-circle me-2"></i>
+                    View Story
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- Insights -->
 
-<div class="container">
 
-<h2 class="section-title">
-Top Insights
-</h2>
+<!-- ================= KEY INSIGHTS ================= -->
 
-<div class="row g-4">
+<section class="section">
 
-<div class="col-md-3">
+    <div class="container">
 
-<div class="card p-4 text-center">
+        <div class="text-center mb-5">
 
-<div class="stat">85+</div>
+            <div class="section-label">
+                Key Insights
+            </div>
 
-<h5>Countries Surveyed</h5>
+            <h2 class="section-title">
+                AI Adoption at a Glance
+            </h2>
 
-<p>
-Data collected from students across the world.
-</p>
+            <p class="section-description">
+                A quick overview of important findings from our
+                global education AI analysis.
+            </p>
 
-</div>
+        </div>
 
-</div>
 
-<div class="col-md-3">
+        <div class="row g-4">
 
-<div class="card p-4 text-center">
 
-<div class="stat">67%</div>
+            <!-- CARD 1 -->
 
-<h5>AI Usage Growth</h5>
+            <div class="col-lg-3 col-md-6">
 
-<p>
-Increase in AI adoption among students.
-</p>
+                <div class="stat-card">
 
-</div>
+                    <div class="stat-icon">
+                        <i class="bi bi-globe-americas"></i>
+                    </div>
 
-</div>
+                    <div class="stat">
+                        85+
+                    </div>
 
-<div class="col-md-3">
+                    <h5>
+                        Countries
+                    </h5>
 
-<div class="card p-4 text-center">
+                    <p>
+                        Education data analyzed across
+                        multiple countries and regions.
+                    </p>
 
-<div class="stat">#1</div>
+                </div>
 
-<h5>Top AI Tool</h5>
+            </div>
 
-<p>
-ChatGPT is the most widely used AI assistant.
-</p>
 
-</div>
+            <!-- CARD 2 -->
 
-</div>
+            <div class="col-lg-3 col-md-6">
 
-<div class="col-md-3">
+                <div class="stat-card">
 
-<div class="card p-4 text-center">
+                    <div class="stat-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
 
-<div class="stat">48%</div>
+                    <div class="stat">
+                        67%
+                    </div>
 
-<h5>Institutional Support</h5>
+                    <h5>
+                        AI Adoption Growth
+                    </h5>
 
-<p>
-Universities actively support AI integration.
-</p>
+                    <p>
+                        Significant growth in the adoption
+                        of AI-based educational technologies.
+                    </p>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
 
-<!-- About -->
+            <!-- CARD 3 -->
 
-<div class="about">
+            <div class="col-lg-3 col-md-6">
 
-<h2>
-About This Project
-</h2>
+                <div class="stat-card">
 
-<p class="mt-3">
+                    <div class="stat-icon">
+                        <i class="bi bi-robot"></i>
+                    </div>
 
-This project analyzes Artificial Intelligence adoption in education
-using Tableau dashboards integrated with Flask.
+                    <div class="stat">
+                        #1
+                    </div>
 
-It provides interactive visualizations of AI usage, institutional
-support, regional trends, and educational insights collected from
-multiple countries.
+                    <h5>
+                        Leading AI Tool
+                    </h5>
 
-</p>
+                    <p>
+                        ChatGPT leads the analyzed AI
+                        education tool landscape.
+                    </p>
 
-<div class="mt-4">
+                </div>
 
-<a href="/dashboard1" class="btn btn-primary">
-View Dashboard 1
-</a>
+            </div>
 
-<a href="/dashboard2" class="btn btn-success">
-View Dashboard 2
-</a>
 
-<a href="/story" class="btn btn-warning">
-View Story
-</a>
+            <!-- CARD 4 -->
 
-</div>
+            <div class="col-lg-3 col-md-6">
 
-</div>
+                <div class="stat-card">
 
-</div>
+                    <div class="stat-icon">
+                        <i class="bi bi-building-check"></i>
+                    </div>
 
-<!-- Footer -->
+                    <div class="stat">
+                        48%
+                    </div>
+
+                    <h5>
+                        Institutional Support
+                    </h5>
+
+                    <p>
+                        Educational institutions are
+                        increasingly supporting AI integration.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DASHBOARDS ================= -->
+
+<section class="section bg-white">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="section-label">
+                Interactive Analytics
+            </div>
+
+            <h2 class="section-title">
+                Explore Our Dashboards
+            </h2>
+
+            <p class="section-description">
+                Discover trends, comparisons and insights through
+                interactive Tableau dashboards.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- Dashboard 1 -->
+
+            <div class="col-lg-4">
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-header">
+
+                        <i class="bi bi-bar-chart-line"></i>
+
+                        <h4>
+                            Dashboard 01
+                        </h4>
+
+                    </div>
+
+                    <div class="dashboard-body">
+
+                        <p>
+                            Explore global AI adoption patterns,
+                            regional differences and educational
+                            trends.
+                        </p>
+
+                        <a href="/dashboard1"
+                           class="btn btn-primary">
+
+                            Open Dashboard
+                            <i class="bi bi-arrow-right ms-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dashboard 2 -->
+
+            <div class="col-lg-4">
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-header">
+
+                        <i class="bi bi-pie-chart"></i>
+
+                        <h4>
+                            Dashboard 02
+                        </h4>
+
+                    </div>
+
+                    <div class="dashboard-body">
+
+                        <p>
+                            Analyze AI tool competition, usage patterns
+                            and institutional adoption.
+                        </p>
+
+                        <a href="/dashboard2"
+                           class="btn btn-primary">
+
+                            Open Dashboard
+                            <i class="bi bi-arrow-right ms-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Story -->
+
+            <div class="col-lg-4">
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-header">
+
+                        <i class="bi bi-journal-richtext"></i>
+
+                        <h4>
+                            Data Story
+                        </h4>
+
+                    </div>
+
+                    <div class="dashboard-body">
+
+                        <p>
+                            Follow a visual data story explaining
+                            the evolution and impact of AI in education.
+                        </p>
+
+                        <a href="/story"
+                           class="btn btn-primary">
+
+                            View Story
+                            <i class="bi bi-arrow-right ms-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TABLEAU ================= -->
+
+<section class="tableau-section">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <div class="section-label">
+                Tableau Visualization
+            </div>
+
+            <h2 class="section-title">
+                Global AI Education Story
+            </h2>
+
+            <p class="section-description text-light">
+
+                Interact directly with our Tableau Story and
+                explore global AI adoption trends.
+
+            </p>
+
+        </div>
+
+
+        <div class="tableau-box">
+
+            <iframe
+                src="https://public.tableau.com/views/Global_AI_Adoption_EducationStory/Story1?:showVizHome=no"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ABOUT PROJECT ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="about-box">
+
+            <div class="row align-items-center g-5">
+
+
+                <div class="col-lg-7">
+
+                    <div class="section-label">
+                        About The Project
+                    </div>
+
+                    <h2 class="mt-2 mb-4">
+                        Understanding the Future of
+                        AI in Education
+                    </h2>
+
+                    <p>
+                        This project analyzes the adoption and
+                        growth of Artificial Intelligence in
+                        education using data analytics and
+                        interactive visualization.
+                    </p>
+
+                    <p>
+                        The platform combines Python, Flask and
+                        Tableau to provide an interactive environment
+                        where users can explore AI adoption,
+                        regional trends, educational technology
+                        usage and institutional support.
+                    </p>
+
+
+                    <div class="mt-4">
+
+                        <span class="tech-badge">
+                            Python
+                        </span>
+
+                        <span class="tech-badge">
+                            Flask
+                        </span>
+
+                        <span class="tech-badge">
+                            Tableau
+                        </span>
+
+                        <span class="tech-badge">
+                            Bootstrap
+                        </span>
+
+                        <span class="tech-badge">
+                            Data Analytics
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <div class="p-4 rounded-4"
+                         style="background:#f1f5f9;">
+
+                        <h5 class="fw-bold mb-4">
+                            Project Focus
+                        </h5>
+
+
+                        <div class="d-flex mb-3">
+
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+
+                            <span>
+                                Global AI adoption analysis
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex mb-3">
+
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+
+                            <span>
+                                Regional comparison
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex mb-3">
+
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+
+                            <span>
+                                AI tool usage trends
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex mb-3">
+
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+
+                            <span>
+                                Urban vs rural adoption
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex">
+
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+
+                            <span>
+                                Interactive Tableau storytelling
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-<h4>
-Global AI Adoption in Education
-</h4>
+    <div class="container">
 
-<p>
-Built with Flask • Tableau • Python • Bootstrap
-</p>
+        <div class="row g-4">
 
-<p>
-© 2026 All Rights Reserved
-</p>
+
+            <div class="col-lg-6">
+
+                <h4>
+                    <i class="bi bi-globe2 me-2"></i>
+                    Global AI Education
+                </h4>
+
+                <p class="mt-3">
+                    Exploring the impact and adoption of
+                    Artificial Intelligence in education
+                    through data and visualization.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h6 class="text-white">
+                    Navigation
+                </h6>
+
+                <p class="mb-1">
+                    <a href="/dashboard1"
+                       class="text-secondary text-decoration-none">
+                        Dashboard 1
+                    </a>
+                </p>
+
+                <p class="mb-1">
+                    <a href="/dashboard2"
+                       class="text-secondary text-decoration-none">
+                        Dashboard 2
+                    </a>
+                </p>
+
+                <p>
+                    <a href="/story"
+                       class="text-secondary text-decoration-none">
+                        Story
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h6 class="text-white">
+                    Technologies
+                </h6>
+
+                <p>
+                    Python<br>
+                    Flask<br>
+                    Tableau<br>
+                    Bootstrap
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <div class="text-center">
+
+            <small>
+                © 2026 Global AI Adoption in Education.
+                All Rights Reserved.
+            </small>
+
+        </div>
+
+    </div>
 
 </footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
