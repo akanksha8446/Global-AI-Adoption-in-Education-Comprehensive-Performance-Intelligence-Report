@@ -63,5 +63,6 @@ The project contains 7 story scenes:
 
 ## Author
 
-Jay Jagatap
+Akanksha Patne
+
 
